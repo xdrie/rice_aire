@@ -6,14 +6,14 @@ new rice
 
 the installer will install packages and stow the configuration files.
 
-### installer prerequisites
+### prerequisites
 
 install:
 + `git`
 + `stow`
-+ `yay`
++ `python-sh` (`pip install sh` on non-Arch distros)
 
-### install
+### installer
 
 use the installer script to manage installation:
 ```sh
