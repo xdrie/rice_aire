@@ -1,0 +1,8 @@
+
+## paths
+DOCS=$HOME/Documents
+export DOC_LIBRARY=$DOCS
+export NOTEBOOK=$DOCS/Notes/omninotebook
+
+## misc
+export DELICIOUS=1

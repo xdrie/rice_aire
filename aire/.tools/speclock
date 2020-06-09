@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+############
+# SPEC-LOCK #
+############
+# fancy/special locking script
+
+insidecolor=00000000
+ringcolor=ffffffff
+keyhlcolor=d23c3dff
+bshlcolor=d23c3dff
+separatorcolor=00000000
+insidevercolor=00000000
+insidewrongcolor=d23c3dff
+ringvercolor=ffffffff
+ringwrongcolor=ffffffff
+verifcolor=ffffffff
+timecolor=ffffffff
+datecolor=ffffffff
+loginbox=00000066
+font="sans-serif"
+locktext='locked'
+
+lock() {
+	#$1 image path
+
+	i3lock \
+		-t -i "$1" \
+		--timepos='x+110:h-70' \
+		--datepos='x+43:h-45' \
+		--clock --date-align 1 --datestr "$locktext" \
+		--insidecolor=$insidecolor --ringcolor=$ringcolor --line-uses-inside \
+		--keyhlcolor=$keyhlcolor --bshlcolor=$bshlcolor --separatorcolor=$separatorcolor \
+		--insidevercolor=$insidevercolor --insidewrongcolor=$insidewrongcolor \
+		--ringvercolor=$ringvercolor --ringwrongcolor=$ringwrongcolor --indpos='x+280:h-70' \
+		--radius=20 --ring-width=4 --veriftext='' --wrongtext='' \
+		--verifcolor="$verifcolor" --timecolor="$timecolor" --datecolor="$datecolor" \
+		--time-font="$font" --date-font="$font" --layout-font="$font" --verif-font="$font" --wrong-font="$font" \
+		--noinputtext='' --force-clock --pass-media-keys $lockargs 
+}
+
+SCREEN="/tmp/speclock_screen.png"
+
+# take screenshot
+# flameshot full -r > $SCREEN
+maim $SCREEN
+
+## process
+
+# optionally composite a given image ($1)
+[[ -f $1 ]] && convert $SCREEN $1 -gravity center -composite -matte $SCREEN
+
+# crunch
+convert $SCREEN -scale 10% -blur 2x4 -scale 1000% $SCREEN
+
+# lock() via i3lock
+lock $SCREEN
+
+# remove 
+rm $SCREEN
+
+# sleep 1 adds a small delay to prevent possible race conditions with suspend
+sleep 1
+exit 0

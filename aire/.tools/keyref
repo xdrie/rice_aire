@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+function keyref() {
+  rg bindsym ~/.config/i3/config -B1 --color=always
+}
+
+keyref | less -QRS

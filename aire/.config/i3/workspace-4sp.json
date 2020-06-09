@@ -1,0 +1,100 @@
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1501,
+       "width": 2401,
+       "x": 0,
+       "y": 0
+    },
+    "name": "ranger",
+    "percent": 0.187760416666667,
+    "swallows": [
+       {
+       "class": "^kitty$",
+       "instance": "^kitty$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.812239583333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "floating": "auto_off",
+            "layout": "splith",
+            "percent": 0.3,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 2,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1501,
+                       "width": 2401,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "name": "xdrie@Mauve: ~",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^kitty$",
+                       "instance": "^kitty$"
+                       }
+                    ],
+                    "type": "con"
+                },
+                {
+                    "border": "pixel",
+                    "current_border_width": 2,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1501,
+                       "width": 2401,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "name": "profanity",
+                    "percent": 0.5,
+                    "swallows": [
+                       {
+                       "class": "^kitty$",
+                       "instance": "^kitty$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1501,
+               "width": 2401,
+               "x": 0,
+               "y": 0
+            },
+            "name": "con",
+            "percent": 0.7,
+            "swallows": [
+               {
+               "class": "^kitty$",
+               "instance": "^kitty$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

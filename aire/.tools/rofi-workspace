@@ -1,0 +1,121 @@
+#!/usr/bin/env ruby
+
+require 'getoptlong'
+require 'open3'
+require 'yaml'
+
+# Quickly grab the current container
+mark = 'net.ryan-s.rofi-workspace'
+pid = Process.spawn(*%q[i3-msg mark] << mark)
+Process.wait(pid)
+
+# Initialization logic
+
+$cache = ENV.fetch('XDG_CACHE_HOME') { File.join(ENV['HOME'], '.cache') }
+
+options_file = File.join($cache, 'rofi-workspace')
+
+options = File.file?(options_file) ? File.open(options_file, 'r') {|f| YAML.load(f) } : {}
+
+# Parse arguments
+
+cli_opts = GetoptLong.new(
+  ['--help', '-h', GetoptLong::NO_ARGUMENT],
+  ['--move', '-m', GetoptLong::NO_ARGUMENT],
+  ['--rename', '-r', GetoptLong::NO_ARGUMENT],
+  ['--send', '-s', GetoptLong::NO_ARGUMENT],
+  ['--usage', '-u', GetoptLong::NO_ARGUMENT],
+)
+
+do_move = false
+do_rename = false
+do_send = false
+
+cli_opts.each do |opt, arg|
+  case opt
+  when '--move'; do_move = true
+  when '--rename'; do_rename = true
+  when '--send'; do_send = true
+  when '--help', '--usage'
+    puts <<~EOF
+      Usage: rofi-workspace [options]
+
+      FLAGS
+        --help,   -h  Show this message.
+        --move,   -m  Move focus to a different workspace.
+        --rename, -r  Rename the current workspace.
+        --send,   -s  Send a window to a different workspace.
+        --usage,  -u  Show this message.
+    EOF
+
+    exit 0
+  end
+end
+
+do_print = !(do_move || do_rename || do_send)
+
+if do_rename && (do_move || do_send)
+  $stderr << "--rename cannot be used with --move or --send\n"
+  exit(-1)
+end
+
+# Call into rofi
+
+prompt = [
+  *('move' if do_move),
+  *('rename' if do_rename),
+  *('send' if do_send),
+  *('print' if do_print),
+].join('+')
+
+choice, status = Open3.capture2(
+  *%w[rofi -dmenu -matching fuzzy -mesg],
+  'enter a workspace name', '-p',
+  prompt,
+  stdin_data: options.each.sort_by{|(k, v)| [-v, k] }.map{|(k, _)| k }.join("\n"),
+)
+
+raise 'rofi did not exit normally' unless status.exited?
+
+choice.strip!
+
+exit status.exitstatus unless status.success?
+exit 1 if choice.empty?
+
+# Update the cache
+
+begin
+  Integer(choice)
+rescue ArgumentError
+  options[choice] = options.fetch(choice, 0) + 1
+
+  File.open(options_file, 'w') {|f| f << YAML.dump(options) }
+end
+
+# Perform the requested action
+
+puts choice if do_print
+
+i3cmd = []
+
+add_i3cmd = lambda do |c|
+  i3cmd[-1] += ';' unless i3cmd.empty?
+  i3cmd += c
+end
+
+add_i3cmd.(%W[[con_mark=#{mark.inspect}] move container to workspace] << choice) if do_send
+add_i3cmd.(%w[workspace] << choice) if do_move
+add_i3cmd.(%W[[con_mark=#{mark.inspect}] focus]) if do_send && do_move
+
+add_i3cmd.(%w[rename workspace to] << choice) if do_rename
+
+add_i3cmd.(%w[unmark] << mark)
+
+unless i3cmd.empty?
+  pid = Process.spawn('i3-msg', *i3cmd)
+  Process.wait(pid)
+
+  raise 'i3-msg did not exit normally' unless $?.exited?
+  exit status.exitstatus unless $?.success?
+end
+

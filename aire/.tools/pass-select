@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# select account name
+ACCT="$(find $HOME/.password-store -type f -name '*.gpg' -printf '%P\n' | cut -f 1 -d '.' | rofi -i -dmenu -p 'pass')"
+
+# ensure find succeeded
+if [[ $? == 0 ]]
+then
+  if [ -z "$1" ] || [ "$1" = "pass" ]; then
+    PASSWORD="$(pass $ACCT | head -1)"
+    xdotool type $PASSWORD
+  elif [ "$1" = "user" ]; then
+    USERNAME="$(pass $ACCT | grep '^user' | awk '{print $2}')"
+    xdotool type $USERNAME
+  elif [ "$1" = "batch" ]; then
+    USERNAME="$(pass $ACCT | grep '^user' | awk '{print $2}')"
+    if [ -z $USERNAME ]; then
+      echo "username not found"
+      exit 2
+    fi
+    PASSWORD="$(pass $ACCT | head -1)"
+    xdotool type $USERNAME
+    xdotool key Tab
+    xdotool type $PASSWORD
+  else
+    FIELD="$(pass $ACCT | grep "^${1}" | awk '{print $2}')"
+    xdotool type $FIELD
+  fi
+else
+  echo "account not found"
+fi

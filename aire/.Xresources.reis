@@ -1,0 +1,9 @@
+*.font: Noto Sans:size=10
+
+*.dpi:                          96
+Xft.antialias:                  1
+Xft.autohint:                   1
+Xft.hinting:                    1
+Xft.hintstyle:                  hintslight
+Xft.lcdfilter:                  lcdlight
+Xft.rgba:                       rgb

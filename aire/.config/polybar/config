@@ -1,0 +1,203 @@
+
+[colors]
+; color format: #aa[rrggbb]
+;background      = ${xrdb:color0:#222}
+;foreground      = ${xrdb:color7:#222}
+
+; default colors
+background      = #aa1f1f1f
+foreground      = #bbbbbb
+; emphasis colors
+background-em   = #ee555555
+foreground-em   = #eeeeee
+; colorful colors
+info            = ${xrdb:foreground}
+primary         = ${xrdb:color6}
+secondary       = ${xrdb:color4}
+warning         = ${xrdb:color5}
+
+[bar/mystatus]
+; monitor = ${env:MONITOR:HDMI-1}
+dpi = ${xrdb:Xft.dpi:-1}
+width = 100%
+height = 2%
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = ${colors.foreground}
+radius = 0.0
+fixed-center = true
+bottom = false
+offset-x = 0%
+offset-y = 0%
+border-size = 0
+padding = 1
+module-margin = 1
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+; fonts
+font-0 = Input Mono:size=8;2
+font-1 = Material Icons:pixelsize=10;3
+
+modules-left = datetime pulseaudio memory cpu temperature battery
+modules-center = xwindow
+modules-right = wireless-network music_mpd music_spotify i3 lock
+
+tray-position = right
+tray-padding = 0
+tray-background = ${colors.background}
+tray-transparent = true
+
+[module/xwindow]
+type = internal/xwindow
+label =  %title:0:48:...%
+label-foreground = ${colors.info}
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+format = <label-state> <label-mode>
+
+label-focused = %name%
+label-focused-foreground = ${colors.foreground-em}
+label-focused-background = ${colors.background-em}
+# label-focused-overline = ${colors.info}
+label-focused-padding = 1
+
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+label-visible = %name%
+label-visible-padding = 1
+
+label-urgent = "%name%"
+label-urgent-overline = ${colors.warning}
+label-urgent-padding = 1
+
+[module/lock]
+type = custom/text
+content = " "
+click-left = $HOME/.tools/betterlock
+
+[module/music_mpd]
+type = internal/mpd
+format-online = ""
+format-playing = " %{A1:kitty -e ncmpcpp &:}<label-song>%{A} <label-time>"
+format-paused = ${self.format-playing}
+label-song = "%artist% - %title%"
+label-time = "(%elapsed% / %total%)"
+host = 127.0.0.1
+port = 6600
+interval = 0.5
+label-song-maxlen = 48
+label-song-ellipsis = true
+
+[module/music_spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python ~/.config/polybar/mpris_tail.py -f '{artist} - {title}'
+tail = true
+# format-underline = ${colors.info}
+
+[module/backlight]
+type = internal/xbacklight
+output = HDMI-A-0
+format = "BR %percentage%%"
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix-foreground = ${colors.foreground-em}
+label = "%{A1:kitty -e htop&:} %percentage%%%{A}"
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix-foreground = ${colors.foreground-em}
+label = " %gb_used%"
+
+[module/wireless-network]
+type = internal/network
+interface = ${env:DEFAULT_NETWORK_INTERFACE:wlp59s0}
+label-connected =  %essid%
+interval = 2.0
+accumulate-stats = true
+
+[module/datetime]
+type = internal/date
+interval = 1
+
+date = "%d.%m.%y"
+date-alt = "%d.%m.%y"
+time = "%H:%M"
+time-alt = "%H:%M:%S"
+
+
+format-prefix-foreground = ${colors.foreground}
+
+label = " %date% // %time%"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = false
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+label-volume = "%{T2}%{T-}%{A3:pavucontrol &:} %percentage%%{A}%{A}"
+format-volume = <label-volume>
+
+label-muted = "muted"
+label-muted-foreground = ${colors.foreground-em}
+label-muted-overline = ${colors.primary}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+label-full = " %percentage%%"
+label-charging = " %percentage%%"
+label-discharging = " %percentage%%"
+
+[module/temperature]
+type = internal/temperature
+; Seconds to sleep between updates
+; Default: 1
+interval = 4
+label = "%{A1:kitty -e s-tui&:}%temperature-c%%{A}"
+; get hwmon from envvar
+hwmon-path = ${env:HWMON_PATH}
+; Threshold temperature to display warning label (in degrees celsius)
+; Default: 80
+warn-temperature = 75
+label-warn-overline = ${colors.warning}
+
+# [module/cputemp]
+# type = custom/script
+# interval = 10
+# exec = echo `sensors -u | grep temp1_input | head -n1 | cut -c16-19`°
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0

@@ -1,0 +1,12 @@
+! unmap capslock
+clear Lock
+keycode 66 = Hyper_L
+! unset HyperL as mod4
+remove mod4 = Hyper_L
+! set HyperL as mod3
+add mod3 = Hyper_L
+
+! unmap RShift
+remove shift = Shift_R
+! set RShift to be a mod5
+add mod5 = Shift_R

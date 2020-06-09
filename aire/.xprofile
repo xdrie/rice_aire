@@ -1,0 +1,23 @@
+
+# xprofile
+
+export TERMINAL=kitty
+
+## qt theme
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+## scaling
+# export GDK_SCALE=2.0
+# export GDK_DPI_SCALE=0.5
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# export QT_FONT_DPI=192
+
+## ssh-agent
+eval $(ssh-agent); ssh-add
+
+## get reis vars
+source ~/.reis_vars
+
+# sync xrdb
+xrdb -merge ~/.Xresources.reis
+xrdb -merge ~/.xfiles/pastel_reis
