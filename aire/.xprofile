@@ -20,4 +20,4 @@ source ~/.reis_vars
 
 # sync xrdb
 xrdb -merge ~/.Xresources.reis
-xrdb -merge ~/.xfiles/pastel_reis
+xrdb -merge ~/.xcolors/pastel_reis
