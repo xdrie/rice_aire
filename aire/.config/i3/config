@@ -208,9 +208,15 @@ for_window [class=".*"] title_format " %title"
 
 # - Window Rules
 
-# autofloat xava
+# autofloat windows
 for_window [class="XAVA"] floating enable
 for_window [window_role="FloatMe"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 # - UI
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
