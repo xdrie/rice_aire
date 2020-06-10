@@ -185,8 +185,9 @@ hide_edge_borders smart
 
 # - Gaps (i3-gaps)
 gaps inner 10
-gaps outer 10
-smart_gaps on
+# gaps outer 10
+# smart_gaps on # only enable gaps when there are containers
+smart_gaps inverse_outer
 
 # border/gap adjust keybinds
 # bindsym $mod+m gaps outer current toggle 20

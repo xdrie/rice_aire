@@ -63,9 +63,24 @@ modules-right = wireless-network music_mpd music_spotify i3 lock
 ; tray-background = ${colors.background}
 ; tray-transparent = true
 
+
+; ---- BARS ----
+
+
 ; bar 1 configuration
-[bar/thestatus1]
+[bar/standard_bar]
 inherit = bar/root
+border-size = 10
+border-bottom = 0
+height = 3%
+
+
+; bar 2 configuration
+[bar/focus_bar]
+inherit = bar/root
+
+; ---- MODULES ----
+
 
 [module/xwindow]
 type = internal/xwindow

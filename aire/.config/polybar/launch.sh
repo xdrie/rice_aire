@@ -16,7 +16,7 @@ for i in /sys/class/hwmon/hwmon*/temp*_input; do
     fi
 done
 
-# monitor
+# monitor (leave empty for default)
 export BAR_MONITOR=""
 
 # kill existing bars (alternatively, `polybar-msg cmd quit`)
@@ -26,11 +26,11 @@ killall -q polybar
 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
 
 # Launch bar1
-polybar -r thestatus1 >> /tmp/polybar1.log 2>&1 &
+polybar -r standard_bar >> /tmp/polybar1.log 2>&1 &
 ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mybar1
 
 # Launch bar2
-# polybar -r mystatus >> /tmp/polybar2.log 2>&1 &
+# polybar -r focus_bar >> /tmp/polybar2.log 2>&1 &
 # ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mybar2
 
 echo "bars launched"
