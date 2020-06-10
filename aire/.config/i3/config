@@ -213,7 +213,7 @@ for_window [class="XAVA"] floating enable
 for_window [window_role="FloatMe"] floating enable
 
 # - UI
-exec_always no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ####################
 # Power Keybinds   #
