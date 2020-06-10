@@ -18,7 +18,7 @@ verifcolor=ffffffff
 timecolor=ffffffff
 datecolor=ffffffff
 loginbox=00000066
-font="sans-serif"
+font="Input Sans"
 locktext='locked'
 
 lock() {

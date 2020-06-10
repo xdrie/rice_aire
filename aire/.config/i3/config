@@ -8,7 +8,7 @@ set_from_resource $system_dpi Xft.dpi 96 # get system resource, with default val
 exec xrandr --dpi $system_dpi
 
 # - Font
-font pango:Input Mono 10
+font pango:Iosevka Sparkle Medium 10
 
 # - Color variables
 set $unfocused_border       #1d1f21

@@ -26,11 +26,9 @@ PACKAGES = [
     "xdotool",
     "betterlockscreen",
     # fonts
-    "ttf-material-design-icons",
-    "ttf-input",
-    "otf-nerd-fonts-fira-code",
-    "nerd-fonts-fira-mono",
-    "noto-fonts",
+    "ttf-nerd-fonts-input",
+    "nerd-fonts-iosevka",
+    "ttc-iosevka-sparkle",
     # util
     "unclutter",
     "xautolock",

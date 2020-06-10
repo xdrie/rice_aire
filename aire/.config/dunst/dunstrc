@@ -35,7 +35,7 @@
     # Positive y value is measured from the top of the screen
     geometry = "480x6-20+60"
 
-    font = Input Mono 10
+    font = Iosevka Sparkle Medium 10
     allow_markup = yes
     plain_text = no             # Treat message as plain text
     sort = yes                  # Sort messages by urgency
