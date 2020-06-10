@@ -10,7 +10,7 @@ from os.path import expanduser
 from sys import argv, exit
 
 # config
-STOW_PACKAGE = 'aire'
+STOW_PACKAGE = "aire"
 PACKAGES = [
     # main packages
     "i3-gaps",
@@ -53,13 +53,8 @@ def ensure(prg):
         exit(f"ERROR: {prg} is not available.")
 
 
-ensure("pacman")
 ensure("stow")
 ensure("git")
-if not is_command("yay"):
-    # yay not installed, install it
-    with sh.contrib.sudo:
-        sh.pacman("-S", "yay")
 
 # check subcommand
 if len(argv) <= 1:
@@ -70,10 +65,18 @@ COMMAND = argv[1]
 
 
 from sh import stow
-restow = stow.bake('-v', '-R', '-t', environ.get('HOME'))
-unstow = stow.bake('-v', '-D', '-t', environ.get('HOME'))
+
+restow = stow.bake("-v", "-R", "-t", environ.get("HOME"))
+unstow = stow.bake("-v", "-D", "-t", environ.get("HOME"))
+
 
 def install_deps():
+    ensure("pacman")
+    if not is_command("yay"):
+        # yay not installed, install it
+        with sh.contrib.sudo:
+            sh.pacman("-S", "yay")
+
     from sh import yay
 
     yay_install = yay.bake("-S", "--needed", _fg=True)
@@ -86,13 +89,15 @@ def stow_configs():
     print("stowing configs")
     restow(STOW_PACKAGE)
 
+
 def unstow_configs():
     print("unstowing configs")
     unstow(STOW_PACKAGE)
 
+
 if COMMAND == "install_deps":
     install_deps()
-if COMMAND == "install_configs":
+if COMMAND == "stow_configs":
     stow_configs()
 if COMMAND == "install":
     install_deps()

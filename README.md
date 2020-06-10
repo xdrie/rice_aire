@@ -23,6 +23,8 @@ use the installer script to manage installation:
 ```sh
 # to install
 ./script/manage.sh install
+# stow deps only, skip packages
+./script/manage.sh stow_configs
 # uninstall
 ./script/manage.sh uninstall
 ```
