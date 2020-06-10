@@ -1,4 +1,4 @@
-*.font: Input Sans:size=10
+*.font: Overpass:size=10
 
 *.dpi:                          96
 Xft.antialias:                  1
