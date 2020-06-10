@@ -17,6 +17,7 @@ secondary       = ${xrdb:color4}
 warning         = ${xrdb:color5}
 
 [bar/mystatus]
+enable-ipc = true
 ; monitor = ${env:MONITOR:HDMI-1}
 dpi = ${xrdb:Xft.dpi:-1}
 width = 100%
