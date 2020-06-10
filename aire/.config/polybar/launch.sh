@@ -20,7 +20,7 @@ done
 export BAR_MONITOR=""
 
 # kill existing bars (alternatively, `polybar-msg cmd quit`)
-killall -q polybar
+pkill polybar
 
 ### LAUNCH BARS
 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
@@ -32,6 +32,8 @@ ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bar1
 # Launch bar2
 polybar -r focus_bar >> /tmp/polybar2.log 2>&1 &
 ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bar2
-echo 'cmd:hide' >/tmp/ipc-bar2 # hide bar2
+
+# hide bar2
+(sleep 0.2 && echo 'cmd:hide' >/tmp/ipc-bar2) &
 
 echo "bars launched"
