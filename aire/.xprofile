@@ -15,9 +15,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 ## ssh-agent
 eval $(ssh-agent); ssh-add
 
-## get reis vars
-source ~/.reis_vars
+## get aire vars
+source ~/.aire_vars
 
 # sync xrdb
-xrdb -merge ~/.Xresources.reis
-xrdb -merge ~/.xcolors/pastel_reis
+xrdb -merge ~/.Xresources.aire
+xrdb -merge ~/.xcolors/pastel_aire

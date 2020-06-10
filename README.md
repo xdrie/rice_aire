@@ -67,7 +67,7 @@ nitrogen ~/Pictures
 ### hidpi
 to enable HIDPI support in GTK/Qt apps:
 + uncomment the `scaling` section in `~/.xprofile`.
-+ in `~/.Xresources.reis` update `*.dpi`.
++ in `~/.Xresources.aire` update `*.dpi`.
 
 ## optional extensions
 
