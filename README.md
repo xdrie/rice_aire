@@ -60,6 +60,10 @@ nitrogen ~/Pictures
 
 + update the `CORETEMP_FILE` variable in `~/.config/polybar/launch.sh` to the correct [hwmon file](https://github.com/polybar/polybar/issues/2078#issuecomment-620630184).
 
+### pulseaudio
+
++ update the `PULSE_SINK` variable `~/.config/polybar/launch.sh` to the correct pulseaudio sink.
+
 ### hidpi
 to enable HIDPI support in GTK/Qt apps:
 + uncomment the `scaling` section in `~/.xprofile`.
