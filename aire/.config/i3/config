@@ -330,6 +330,9 @@ mode "fancy" {
   bindsym x exec --no-startup-id xava; mode "default"
   bindsym Shift+x exec --no-startup-id pkill xava; mode "default"
 
+  bindsym t exec --no-startup-id "picom-trans -c 90"; mode "default"
+  bindsym Shift+t exec --no-startup-id "picom-trans -c 100"; mode "default"
+
   bindsym Escape mode "default"
 }
 bindsym $mod+$cap+l mode "fancy"
