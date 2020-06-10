@@ -1,4 +1,6 @@
 
+; ---- COLORS ----
+
 [colors]
 ; color format: #aa[rrggbb]
 
@@ -14,8 +16,8 @@ primary         = ${xrdb:color6}
 secondary       = ${xrdb:color4}
 warning         = ${xrdb:color5}
 
+; ---- MAIN SETTINGS ----
 
-; polybar configuration
 [settings]
 screenchange-reload = true
 ; non-compositor transparency mimicking
@@ -66,7 +68,6 @@ modules-right = wireless-network music_mpd music_spotify i3 lock
 
 ; ---- BARS ----
 
-
 ; bar 1 configuration
 [bar/standard_bar]
 inherit = bar/root
@@ -80,7 +81,6 @@ height = 3%
 inherit = bar/root
 
 ; ---- MODULES ----
-
 
 [module/xwindow]
 type = internal/xwindow

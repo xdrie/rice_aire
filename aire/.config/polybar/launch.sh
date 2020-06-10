@@ -27,10 +27,11 @@ echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
 
 # Launch bar1
 polybar -r standard_bar >> /tmp/polybar1.log 2>&1 &
-ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mybar1
+ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bar1
 
 # Launch bar2
-# polybar -r focus_bar >> /tmp/polybar2.log 2>&1 &
-# ln -s /tmp/polybar_mqueue.$! /tmp/ipc-mybar2
+polybar -r focus_bar >> /tmp/polybar2.log 2>&1 &
+ln -sf /tmp/polybar_mqueue.$! /tmp/ipc-bar2
+echo 'cmd:hide' >/tmp/ipc-bar2 # hide bar2
 
 echo "bars launched"

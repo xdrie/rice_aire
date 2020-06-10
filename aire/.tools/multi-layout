@@ -4,6 +4,62 @@
 multi-layout script
 """
 
+# we use a flag /tmp/aire_mode
+# if not exists, STANDARD
+# if exists, the key describes the current mode
+
 import sh
-from os import environ
+from os import environ, path
 from sys import argv, exit
+from enum import IntEnum
+
+class AireMode(IntEnum):
+    STANDARD = 0
+    FOCUS = 1
+
+# check subcommand
+if len(argv) <= 1:
+    print("no action specified.")
+    print("usage: multi-layout <toggle|<mode>>")
+    exit(2)
+COMMAND = argv[1]
+
+AIRE_FLAG_FILE = '/tmp/aire_mode'
+def get_current_mode() -> AireMode:
+    # check flag file
+    if not path.isfile(AIRE_FLAG_FILE):
+        return AireMode.STANDARD
+    # read file
+    with open(AIRE_FLAG_FILE, 'r') as f:
+        mode_id = int(f.read())
+        return AireMode(mode_id)
+
+def save_mode(mode: AireMode):
+    with open(AIRE_FLAG_FILE, 'w+') as f:
+        f.write(str(int(mode)))
+
+def polybar_ipc(msg, fifo):
+    from sh import echo
+    return echo(msg, _out=fifo)
+
+def apply_mode(mode: AireMode):
+    print(f'applying mode: {mode}')
+    from sh import i3_msg
+    i3_set_gaps = i3_msg.bake('gaps')
+    if mode == AireMode.STANDARD:
+        polybar_ipc('cmd:show', '/tmp/ipc-bar1')
+        polybar_ipc('cmd:hide', '/tmp/ipc-bar2')
+        i3_set_gaps('inner', 'all', 'set', '10')
+    elif mode == AireMode.FOCUS:
+        polybar_ipc('cmd:hide', '/tmp/ipc-bar1')
+        polybar_ipc('cmd:show', '/tmp/ipc-bar2')
+        i3_set_gaps('inner', 'all', 'set', '0')
+    save_mode(mode)
+
+if COMMAND == 'toggle':
+    # toggle between standard and focus modes
+    is_standard = get_current_mode() == AireMode.STANDARD
+    if is_standard:
+        apply_mode(AireMode.FOCUS)
+    else:
+        apply_mode(AireMode.STANDARD)

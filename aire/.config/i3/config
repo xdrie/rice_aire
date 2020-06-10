@@ -189,12 +189,8 @@ gaps inner 10
 # smart_gaps on # only enable gaps when there are containers
 smart_gaps inverse_outer
 
-# border/gap adjust keybinds
-# bindsym $mod+m gaps outer current toggle 20
-# bindsym $mod+Shift+m gaps inner current toggle 20
-# bindsym $cap+f gaps outer current set 0; gaps inner current set 0
-
-# bindsym $mod+m $HOME/.tools/multi-layout toggle
+# mode adjustment
+bindsym $mod+m exec "$HOME/.tools/multi-layout toggle"
 
 # - Window colors
 # class                 border                  background              foreground              indicator           child_border
@@ -217,7 +213,7 @@ for_window [class="XAVA"] floating enable
 for_window [window_role="FloatMe"] floating enable
 
 # - UI
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always no-startup-id $HOME/.config/polybar/launch.sh
 
 ####################
 # Power Keybinds   #
