@@ -8,9 +8,13 @@ now with workflow optimizations and an install script.
 
 ## features
 
++ centralized configuration of colors (mostly via [xresources](aire/.Xresources.aire))
 + workflow layouts: choose between `STANDARD` and `FOCUSED`, and switch dynamically using a keybind!
 + a [run-or-raise](https://github.com/mkropat/jumpapp) script for rapidly accessing important apps
 + fancy tweaks that can be selectively enabled with binds, or in a config file
+  + live gradient audio visualizer in background
+  + fadeblur any window
++ lots and lots of keybinds, but also good mouse support
 
 ## setup
 
