@@ -6,6 +6,12 @@ a light, colorful pastel rice. (v0.1.1)
 
 now with workflow optimizations and an install script.
 
+## features
+
++ workflow layouts: choose between `STANDARD` and `FOCUSED`, and switch dynamically using a keybind!
++ a [run-or-raise](https://github.com/mkropat/jumpapp) script for rapidly accessing important apps
++ fancy tweaks that can be selectively enabled with binds, or in a config file
+
 ## setup
 
 the installer will install packages and stow the configuration files.
