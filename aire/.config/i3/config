@@ -244,12 +244,14 @@ bindsym XF86MonBrightnessDown exec sudo brightnessctl set 10%-
 bindsym Shift+XF86MonBrightnessDown exec sudo brightnessctl set 5%
 
 # Magic binds
-bindsym $cap+z exec kitty -e ncmpcpp &
-bindsym $cap+b exec emacsclient -c -a emacs $NOTEBOOK &
-bindsym $cap+m exec $HOME/scripts/rofi/doc-select &
-bindsym $cap+n exec $HOME/.emacs_anywhere/bin/run
-bindsym $cap+e exec dolphin &
-bindsym $cap+i exec systemsettings5 &
+bindsym $cap+z exec --no-startup-id "kitty --class floater -e ncmpcpp &"
+bindsym $cap+b exec --no-startup-id "$HOME/.tools/jumpapp -i emacs emacsclient -c -a emacs $NOTEBOOK"
+bindsym $cap+Ctrl+b exec --no-startup-id "emacsclient -c -a emacs $NOTEBOOK &"
+bindsym $cap+m exec --no-startup-id "$HOME/scripts/rofi/doc-select &"
+bindsym $cap+n exec --no-startup-id "$HOME/.emacs_anywhere/bin/run &"
+bindsym $cap+e exec --no-startup-id "$HOME/.tools/jumpapp dolphin"
+bindsym $cap+w exec --no-startup-id "$HOME/.tools/jumpapp firefox"
+bindsym $cap+i exec --no-startup-id "$HOME/.tools/jumpapp dolphin systemsettings5"
 
 bindsym $cap+a exec mpc prev
 bindsym $cap+s exec mpc toggle
@@ -279,8 +281,8 @@ bindsym $mod+Tab exec "rofi -modi window -show window"
 bindsym $mod+Shift+backslash exec $HOME/.tools/betterlock
 
 # Floating terminal
-bindsym $mod+Shift+Return exec --no-startup-id kitty --class floating_term
-for_window [class=floating_term] floating enable
+bindsym $mod+Shift+Return exec --no-startup-id kitty --class floater
+for_window [class=floater] floating enable
 
 # pavucontrol
 bindsym $cap+k exec pavucontrol
