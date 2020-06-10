@@ -63,3 +63,7 @@ if COMMAND == 'toggle':
         apply_mode(AireMode.FOCUS)
     else:
         apply_mode(AireMode.STANDARD)
+elif COMMAND == 'focus':
+    apply_mode(AireMode.FOCUS)
+elif COMMAND == 'standard':
+    apply_mode(AireMode.STANDARD)
