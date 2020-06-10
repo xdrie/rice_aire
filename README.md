@@ -63,8 +63,8 @@ nitrogen ~/Pictures
 + `betterlockscreen`
 + `redshift` (optional)
 + `xava` (optional)
-+ `niacop` (optional)
-+ `spicetify-cli`, `spicetify-themes-git` (optional)
++ [`niacop`](https://github.com/xdrie/niacop) (optional)
++ [`spicetify-cli`](https://aur.archlinux.org/packages/spicetify-cli/), [`spicetify-themes-git`](https://aur.archlinux.org/packages/spicetify-themes-git/) (optional)
 
 ## configuration
 
@@ -101,5 +101,5 @@ recommended GTK/Qt setup:
 + use `qt5ct` to set Qt theme to `gtk2`, make sure other options are default
 
 recommended icon themes:
-+ `vimix-icon-theme` (AUR) - Vimix Doder Dark
-+ `la-capitaine-icon-theme` (AUR)
++ [`vimix-icon-theme`](https://aur.archlinux.org/packages/vimix-icon-theme/) - Vimix Doder Dark
++ [`la-capitaine-icon-theme`](https://aur.archlinux.org/packages/la-capitaine-icon-theme/)
