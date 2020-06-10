@@ -1,6 +1,10 @@
 # aire
 
-new rice
+a light, colorful pastel rice.
+
+![screenshot](https://git.rie.icu/xdrie/screenshots/raw/branch/master/aire/2020-06-09_22-53.png)
+
+now with workflow optimizations and an install script.
 
 ## setup
 
