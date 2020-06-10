@@ -81,3 +81,13 @@ see [spicetify-cli documentation](https://github.com/khanhas/spicetify-cli/wiki/
 ## keybindings
 
 use the `Shift+Super+/` keybind to pull up the i3 keybindings list.
+
+## gtk/qt themes
+
+recommended GTK/Qt setup:
++ [Vimix-Midnight](https://github.com/zortax/Vimix-Midnight) GTK2/3 theme
++ use `qt5ct` to set Qt theme to `gtk2`, make sure other options are default
+
+recommended icon themes:
++ `vimix-icon-theme` (AUR) - Vimix Doder Dark
++ `la-capitaine-icon-theme` (AUR)
