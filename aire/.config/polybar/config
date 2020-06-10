@@ -23,7 +23,7 @@ pseudo-transparency = false
 
 [bar/root]
 ; root bar configuration
-override-redirect = true
+; override-redirect = true ; necessary for offset, if used
 enable-ipc = true
 monitor = ${env:BAR_MONITOR:}
 dpi = ${xrdb:Xft.dpi:-1}
