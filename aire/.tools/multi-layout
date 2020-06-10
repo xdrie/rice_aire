@@ -43,7 +43,7 @@ def polybar_ipc(msg, fifo):
     return echo(msg, _out=fifo)
 
 def apply_mode(mode: AireMode):
-    print(f'applying mode: {mode}')
+    print(f'applying mode: {str(mode)}')
     from sh import i3_msg
     i3_set_gaps = i3_msg.bake('gaps')
     if mode == AireMode.STANDARD:
