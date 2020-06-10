@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+"""
+multi-layout script
+"""
+
+import sh
+from os import environ
+from sys import argv, exit

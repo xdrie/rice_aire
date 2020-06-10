@@ -184,15 +184,16 @@ hide_edge_borders smart
 # smart_borders on
 
 # - Gaps (i3-gaps)
-gaps inner 20
-gaps outer 20
-# smart_gaps on
+gaps inner 10
+gaps outer 10
+smart_gaps on
 
 # border/gap adjust keybinds
-bindsym $cap+u border toggle
-bindsym $mod+m gaps outer current toggle 20
-bindsym $mod+Shift+m gaps inner current toggle 20
-bindsym $cap+f gaps outer current set 0; gaps inner current set 0
+# bindsym $mod+m gaps outer current toggle 20
+# bindsym $mod+Shift+m gaps inner current toggle 20
+# bindsym $cap+f gaps outer current set 0; gaps inner current set 0
+
+# bindsym $mod+m $HOME/.tools/multi-layout toggle
 
 # - Window colors
 # class                 border                  background              foreground              indicator           child_border
