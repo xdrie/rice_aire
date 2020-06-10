@@ -77,3 +77,7 @@ customize the window to fit your desktop resolution:
 
 ### spicetify
 see [spicetify-cli documentation](https://github.com/khanhas/spicetify-cli/wiki/Basic-Usage)
+
+## keybindings
+
+use the `Shift+Super+/` keybind to pull up the i3 keybindings list.
