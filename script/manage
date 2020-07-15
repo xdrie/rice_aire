@@ -29,6 +29,7 @@ PACKAGES = [
     "otf-overpass",
     "nerd-fonts-iosevka",
     "ttc-iosevka-sparkle",
+    "inter-font",
     # util
     "unclutter",
     "xautolock",
