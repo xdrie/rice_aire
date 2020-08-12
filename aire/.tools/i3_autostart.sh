@@ -30,7 +30,7 @@ unclutter &
 picom -b --experimental-backends &
 
 ##########################################
-# Launch general app                     #
+# Launch general apps                    #
 ##########################################
 
 ## Special
@@ -38,7 +38,12 @@ if testcmd redshift; then
     redshift &
 fi
 
-if testcmd niacop; then
+NIAPATH=$HOME/.bin/niacop
+if test -f $NIAPATH; then
     # run niacop tracker (with delay)
-    (sleep 15 && $HOME/.bin/niacop activity >> ~/.log/niacop/niacop.log) &
+    echo "$(date)" >> ~/.log/niacop/starts.log
+    echo "starting niacop with delay"
+    (sleep 5 && $NIAPATH activity >> ~/.log/niacop/niacop.log) &
+else
+    echo "niacop was not found"
 fi
