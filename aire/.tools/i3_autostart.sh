@@ -7,7 +7,7 @@ testcmd () {
 }
 
 ## X config
-xmodmap ~/.Xmodmap
+xmodmap $HOME/.Xmodmap
 
 ## UI
 
@@ -17,7 +17,7 @@ xmodmap ~/.Xmodmap
 nitrogen --restore &
 
 # betterlock recache
-betterlockscreen -u ~/Pictures/wallpaper.* &
+betterlockscreen -u $HOME/Pictures/wallpaper.* &
 
 ## X scripts
 # Auto Lock
@@ -41,9 +41,9 @@ fi
 NIAPATH=$HOME/.bin/niacop
 if test -f $NIAPATH; then
     # run niacop tracker (with delay)
-    echo "$(date)" >> ~/.log/niacop/starts.log
+    echo "$(date)" >> $HOME/.log/niacop/starts.log
     echo "starting niacop with delay"
-    (sleep 5 && $NIAPATH activity >> ~/.log/niacop/niacop.log) &
+    (sleep 5 && $NIAPATH activity >> $HOME/.log/niacop/niacop.log) &
 else
     echo "niacop was not found"
 fi
