@@ -217,6 +217,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+for_window [class="Godot"] floating enable
 
 # - UI
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
