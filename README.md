@@ -32,11 +32,11 @@ install:
 use the installer script to manage installation:
 ```sh
 # to install
-./script/manage.sh install
+./script/manage install
 # stow deps only, skip packages
-./script/manage.sh stow_configs
+./script/manage stow_configs
 # uninstall
-./script/manage.sh uninstall
+./script/manage uninstall
 ```
 
 ### wallpaper
