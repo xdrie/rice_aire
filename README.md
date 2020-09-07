@@ -1,6 +1,6 @@
 # aire
 
-a light, colorful pastel rice. (v0.1.1)
+a light, colorful pastel rice. (v0.1.2)
 
 ![screenshot](https://git.rie.icu/xdrie/screenshots/raw/branch/master/aire/2020-06-09_22-53.png)
 
