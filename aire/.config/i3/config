@@ -258,7 +258,7 @@ bindsym $cap+m exec --no-startup-id "$HOME/scripts/rofi/doc-select &"
 bindsym $cap+n exec --no-startup-id "$HOME/.emacs_anywhere/bin/run &"
 bindsym $cap+e exec --no-startup-id "$HOME/.tools/jumpapp dolphin"
 bindsym $cap+w exec --no-startup-id "$HOME/.tools/jumpapp firefox"
-bindsym $cap+i exec --no-startup-id "$HOME/.tools/jumpapp dolphin systemsettings5"
+bindsym $cap+i exec --no-startup-id "$HOME/.tools/jumpapp systemsettings5"
 
 bindsym $cap+a exec mpc prev
 bindsym $cap+s exec mpc toggle
