@@ -67,7 +67,7 @@ nitrogen ~/Pictures
 + `betterlockscreen`
 + `redshift` (optional)
 + `xava` (optional)
-+ [`niacop`](https://github.com/xdrie/niacop) (optional)
++ [`niacop-git`](https://aur.archlinux.org/packages/niacop-git/) (optional)
 + [`spicetify-cli`](https://aur.archlinux.org/packages/spicetify-cli/), [`spicetify-themes-git`](https://aur.archlinux.org/packages/spicetify-themes-git/) (optional)
 
 ## configuration
