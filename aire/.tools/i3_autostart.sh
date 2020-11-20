@@ -38,12 +38,11 @@ if testcmd redshift; then
     redshift &
 fi
 
-NIAPATH=$HOME/.bin/niacop
-if test -f $NIAPATH; then
+if testcmd niacop; then
     # run niacop tracker (with delay)
     echo "$(date)" >> $HOME/.log/niacop/starts.log
-    echo "starting niacop with delay"
-    (sleep 5 && $NIAPATH activity >> $HOME/.log/niacop/niacop.log) &
+    echo "starting niacop in 5s"
+    (sleep 5 && niacop activity >> $HOME/.log/niacop/niacop.log) &
 else
     echo "niacop was not found"
 fi
