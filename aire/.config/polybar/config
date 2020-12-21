@@ -47,8 +47,8 @@ line-color = ${colors.foreground}
 radius = 0.0
 
 ; actions
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
+scroll-up = "#i3.prev"
+scroll-down = "#i3.next"
 
 ; fonts
 font-0 = Iosevka Sparkle Medium:size=10;2
