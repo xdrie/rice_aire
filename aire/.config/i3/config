@@ -230,10 +230,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # - Utility/Control
 
 # Media player controls
-# bindsym XF86AudioPause exec mpc toggle
-# bindsym XF86AudioNext exec mpc next
-# bindsym XF86AudioPrev exec mpc prev
-# bindsym XF86AudioPlay exec mpc toggle
 
 # XF86 audio keys
 bindsym XF86AudioMute exec amixer set Master toggle
@@ -241,9 +237,14 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% # 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% # decrease sound volume
 
 # Media player controls
+bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym $cap+a exec exec playerctl previous
+bindsym $cap+s exec exec playerctl play-pause
+bindsym $cap+d exec exec playerctl next
+bindsym $cap+p exec notify-send "DUNST_COMMAND_PAUSE"
 
 # Brightness control
 bindsym XF86MonBrightnessUp exec sudo brightnessctl set +10%
@@ -260,11 +261,6 @@ bindsym $cap+n exec --no-startup-id "$HOME/.emacs_anywhere/bin/run &"
 bindsym $cap+e exec --no-startup-id "$HOME/.tools/jumpapp dolphin"
 bindsym $cap+w exec --no-startup-id "$HOME/.tools/jumpapp firefox"
 bindsym $cap+i exec --no-startup-id "$HOME/.tools/jumpapp systemsettings5"
-
-bindsym $cap+a exec mpc prev
-bindsym $cap+s exec mpc toggle
-bindsym $cap+d exec mpc next
-bindsym $cap+p exec notify-send "DUNST_COMMAND_PAUSE"
 
 # Window management
 bindsym $alt+Ctrl+Escape exec xkill
